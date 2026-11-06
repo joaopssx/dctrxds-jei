@@ -1,0 +1,12 @@
+[package]
+name = "dctrxds-jei-core"
+version = "0.0.1"
+edition = "2024"
+rust-version = "1.95"
+license = "MIT"
+description = "Pure logic of DctrXD's JEI: no dependency on the game"
+publish = false
+
+# Only crates in Horizon's Cargo.lock, by version requirement.
+[dependencies]
+serde_json = "1"

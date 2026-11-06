@@ -1,0 +1,5 @@
+# Local workspace for tests only. It is not part of the .hnmod: a bundle crate
+# may not hold a [workspace] or a Cargo.lock of its own.
+[workspace]
+members = ["mixins/dctrxds_jei/core"]
+resolver = "2"

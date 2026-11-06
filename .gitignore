@@ -1,0 +1,6 @@
+/target/
+__pycache__/
+*.pyc
+# Never commit game files, prepared resources or decompiled sources.
+.local/
+*.jar
