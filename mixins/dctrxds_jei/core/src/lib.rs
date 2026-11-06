@@ -2,3 +2,4 @@
 //! the clock, so all of it can be tested with `cargo test`.
 
 pub mod grid;
+pub mod persist;
