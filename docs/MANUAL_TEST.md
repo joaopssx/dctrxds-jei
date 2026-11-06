@@ -15,7 +15,7 @@ $L = "$env:LOCALAPPDATA\Programs\Horizon Launcher\horizon-launcher.exe"
 
 **Não copie o `.hnmod` para `horizon-mods\` nem o renomeie para `.hmod`.** Essa pasta é só de mods de conteúdo: o jogo não compila
 nada dela e diz que falta o `horizon-mod.toml`. O mod só existe no jogo depois do `native-build` acima, e a instância passa a jogar
-uma versão `native-...`, listada em `& $L list --installed`.
+uma versão `native-...`, listada em `& $L versions --installed`.
 
 Se a grade não aparecer, diminua a escala da interface ou aumente a janela. Para medir: em
 `config\dctrxds_jei-client.toml` da instância, ponha `show_stats = true`; FPS e tempo de desenho aparecem sob o inventário.
