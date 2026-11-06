@@ -32,11 +32,17 @@ Visualizador de itens e receitas para o [Horizon](https://github.com/horizon-rus
 Combustível, compostagem, bigorna, rebolo, fluidos e busca por cor, entre outros. A lista completa, com os motivos, está em
 [docs/PORTING_NOTES.md](docs/PORTING_NOTES.md).
 
-### Compilar
+### Instalar
+
+Este é um mod nativo: o launcher precisa compilá-lo dentro do jogo. **Não coloque o arquivo em `horizon-mods\` nem o renomeie para
+`.hmod`**: essa pasta é só de mods de conteúdo, e o jogo vai dizer que falta o `horizon-mod.toml`. No PowerShell:
 
 ```powershell
-horizon-launcher native-build mixins\dctrxds_jei --instance <sua-instância> --trust-native-code
+$L = "$env:LOCALAPPDATA\Programs\Horizon Launcher\horizon-launcher.exe"
+& $L native-build mixins\dctrxds_jei --instance <sua-instância> --trust-native-code
 ```
+
+O nome e a descrição aparecem em Opções > Mods depois de compilar.
 
 **Atenção:** mods nativos do Horizon não rodam em sandbox e têm as permissões da sua conta. Este mod lê as tabelas do jogo e
 grava somente em `config/dctrxds_jei/` e `config/dctrxds_jei-client.toml`. Ele só usa a rede pelo próprio jogo, quando você liga
@@ -75,11 +81,17 @@ An item and recipe viewer for [Horizon](https://github.com/horizon-rust/horizon)
 Fuel, composting, anvil, grindstone, fluids and colour search, among others. The full list and the reasons are in
 [docs/PORTING_NOTES.md](docs/PORTING_NOTES.md).
 
-### Build
+### Install
+
+This is a native mod: the launcher has to compile it into the game. **Don't put the file in `horizon-mods\` or rename it to
+`.hmod`**: that folder is for content mods only, and the game will say `horizon-mod.toml` is missing. In PowerShell:
 
 ```powershell
-horizon-launcher native-build mixins\dctrxds_jei --instance <your-instance> --trust-native-code
+$L = "$env:LOCALAPPDATA\Programs\Horizon Launcher\horizon-launcher.exe"
+& $L native-build mixins\dctrxds_jei --instance <your-instance> --trust-native-code
 ```
+
+The name and description show in Options > Mods once it is built.
 
 **Warning:** Horizon's native mods are not sandboxed and run with your account's permissions. This mod reads the game's tables
 and writes only to `config/dctrxds_jei/` and `config/dctrxds_jei-client.toml`. It only uses the network through the game itself,
