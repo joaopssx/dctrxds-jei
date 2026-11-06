@@ -1,5 +1,11 @@
 # Open questions
 
+## Answered by the owner
+
+Q1 (new mod), Q3 (Ubuntu on WSL for the Linux gate, launcher on Windows for the game), Q4 (stable hooks, as in the approved plan),
+Q6's id (`dctrxds_jei`). Taken from the approved plan's recommendation: Q5 (own simple art, no JEI textures), Q7 (publish early,
+still your call) and Q9 (`/give` only after an explicit toggle). Still open below: Q2, Q8, the GitHub branches, and the unknowns.
+
 ## Decisions for you
 
 Each has my recommendation. Q1 should be answered first, as it can change the project's direction.
