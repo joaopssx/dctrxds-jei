@@ -4,3 +4,4 @@
 pub mod app;
 pub mod grid;
 pub mod persist;
+pub mod search;
