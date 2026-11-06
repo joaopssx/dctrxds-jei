@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # Adapted from horizon-native-mod-template (MIT, see LICENSES/horizon-native-mod-template-MIT.txt):
-# only the module name of the native test filter differs. It needs Linux (fcntl).
+# the native test runs in the library, where this Horizon keeps `game`, and zero
+# tests is a failure, not a pass. It needs Linux (fcntl).
 """Export pinned sources, apply the template bundle and build a native Horizon."""
 import argparse
 import contextlib
@@ -9,6 +10,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -120,8 +122,9 @@ def main():
         report = {"stage": str(output), "stage_changed": changed,
                   "horizon_revision": PIN, "staging_seconds": time.monotonic()-started}
         if args.action != "stage":
+            selection = ["--lib"] if args.action == "test" else ["--bin", "horizon-client"]
             command = ["cargo", args.action, "--locked", "--offline", "-p", "horizon-client",
-                       "--bin", "horizon-client", "--no-default-features", "--target-dir", str(target)]
+                       *selection, "--no-default-features", "--target-dir", str(target)]
             if args.action == "build":
                 command.extend(["--profile", "fast"])
             if args.action == "test":
@@ -134,6 +137,10 @@ def main():
             log = ROOT / "target" / f"horizon-{args.action}.log"
             log.write_text(result.stdout + result.stderr)
             report["cargo_log"] = str(log)
+            if args.action == "test" and not result.returncode and not re.search(
+                    r"^test result: ok\. [1-9]", result.stdout, re.MULTILINE):
+                print("the native test filter matched no test", file=sys.stderr)
+                result.returncode = 1
             if result.returncode:
                 print(result.stderr[-12000:], file=sys.stderr)
                 print(json.dumps(report), file=sys.stderr)

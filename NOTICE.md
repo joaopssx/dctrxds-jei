@@ -16,7 +16,7 @@ copyright notice in its header and will be listed here.
 
 - Project: <https://github.com/horizon-rust/horizon-native-mod-template>
 - Licence: MIT, in [LICENSES/horizon-native-mod-template-MIT.txt](LICENSES/horizon-native-mod-template-MIT.txt)
-- `tools/horizon.py` is copied from it, with the name of the native test filter changed.
+- `tools/horizon.py` is adapted from it: the native test runs in the library and must match at least one test.
 - `tools/package.py` is adapted from it, to ship crate folders and notice files and to name the hook points version.
 
 ## Horizon
