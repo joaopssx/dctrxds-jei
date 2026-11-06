@@ -48,7 +48,7 @@ hook_version = 1
 kind = "HEAD"
 helper = "draw.rs"
 bindings = [
-  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
   { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
   { name = "screen", ty = "&horizon_client::mod_api::NativeScreenView<'_>", value = "screen" },
 ]
@@ -60,7 +60,7 @@ hook_version = 1
 kind = "HEAD"
 helper = "press.rs"
 bindings = [
-  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
   { name = "screen", ty = "&horizon_client::mod_api::NativeScreenView<'_>", value = "screen" },
   { name = "button", ty = "i32", value = "button" },
   { name = "canceled", ty = "&mut bool", value = "&mut *canceled" },
@@ -73,7 +73,7 @@ hook_version = 1
 kind = "HEAD"
 helper = "release.rs"
 bindings = [
-  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
   { name = "screen", ty = "&horizon_client::mod_api::NativeScreenView<'_>", value = "screen" },
   { name = "button", ty = "i32", value = "button" },
   { name = "canceled", ty = "&mut bool", value = "&mut *canceled" },
@@ -86,7 +86,7 @@ hook_version = 1
 kind = "HEAD"
 helper = "key.rs"
 bindings = [
-  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
   { name = "screen", ty = "&horizon_client::mod_api::NativeScreenView<'_>", value = "screen" },
   { name = "key", ty = "&str", value = "key" },
   { name = "modifiers", ty = "u32", value = "modifiers" },
@@ -100,7 +100,7 @@ hook_version = 1
 kind = "HEAD"
 helper = "typed.rs"
 bindings = [
-  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
   { name = "screen", ty = "&horizon_client::mod_api::NativeScreenView<'_>", value = "screen" },
   { name = "c", ty = "char", value = "c" },
   { name = "canceled", ty = "&mut bool", value = "&mut *canceled" },
