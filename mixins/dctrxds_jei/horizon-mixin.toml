@@ -1,6 +1,6 @@
 [mod]
 id = "dctrxds_jei"
-version = "0.0.1"
+version = "0.1.0"
 priority = 100
 
 # The commit this was tested on. Only named hook points are used, so the
@@ -29,6 +29,80 @@ kind = "HEAD"
 helper = "mods.rs"
 bindings = [
   { name = "mods", ty = "&mut Vec<horizon_client::mod_api::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "settings"
+hook = "settings"
+hook_version = 1
+kind = "HEAD"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "settings_click"
+hook = "settings_click"
+hook_version = 1
+kind = "HEAD"
+helper = "settings_click.rs"
+bindings = [
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+[[injection]]
+id = "register_configs"
+hook = "register_configs"
+hook_version = 1
+kind = "HEAD"
+helper = "register_configs.rs"
+bindings = [
+  { name = "configs", ty = "&mut Vec<crate::game::native_configs::NativeConfig>", value = "&mut *configs" },
+]
+
+[[injection]]
+id = "config_loading"
+hook = "config_loading"
+hook_version = 1
+kind = "HEAD"
+helper = "config_loading.rs"
+bindings = [
+  { name = "config", ty = "&crate::game::native_configs::NativeConfigFile", value = "config" },
+]
+
+[[injection]]
+id = "config_reloading"
+hook = "config_reloading"
+hook_version = 1
+kind = "HEAD"
+helper = "config_reloading.rs"
+bindings = [
+  { name = "config", ty = "&crate::game::native_configs::NativeConfigFile", value = "config" },
+]
+
+[[injection]]
+id = "add_listeners"
+hook = "add_server_reload_listeners"
+hook_version = 1
+kind = "HEAD"
+helper = "add_listeners.rs"
+bindings = [
+  { name = "listeners", ty = "&mut Vec<crate::game::native_reload_listeners::NativeReloadListener>", value = "&mut *listeners" },
+]
+
+[[injection]]
+id = "listener_files"
+hook = "server_reload_listener_apply"
+hook_version = 1
+kind = "HEAD"
+helper = "listener_files.rs"
+bindings = [
+  { name = "listener", ty = "&crate::game::native_reload_listeners::NativeReloadListener", value = "listener" },
+  { name = "files", ty = "&[(String, serde_json::Value)]", value = "files" },
 ]
 
 [[injection]]
@@ -63,6 +137,7 @@ bindings = [
   { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
   { name = "screen", ty = "&horizon_client::mod_api::NativeScreenView<'_>", value = "screen" },
   { name = "button", ty = "i32", value = "button" },
+  { name = "modifiers", ty = "u32", value = "modifiers" },
   { name = "canceled", ty = "&mut bool", value = "&mut *canceled" },
 ]
 
@@ -76,6 +151,19 @@ bindings = [
   { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
   { name = "screen", ty = "&horizon_client::mod_api::NativeScreenView<'_>", value = "screen" },
   { name = "button", ty = "i32", value = "button" },
+  { name = "canceled", ty = "&mut bool", value = "&mut *canceled" },
+]
+
+[[injection]]
+id = "scroll"
+hook = "screen_mouse_scrolled_pre"
+hook_version = 1
+kind = "HEAD"
+helper = "scroll.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+  { name = "screen", ty = "&horizon_client::mod_api::NativeScreenView<'_>", value = "screen" },
+  { name = "scroll", ty = "[f64; 2]", value = "scroll" },
   { name = "canceled", ty = "&mut bool", value = "&mut *canceled" },
 ]
 
@@ -104,6 +192,16 @@ bindings = [
   { name = "screen", ty = "&horizon_client::mod_api::NativeScreenView<'_>", value = "screen" },
   { name = "c", ty = "char", value = "c" },
   { name = "canceled", ty = "&mut bool", value = "&mut *canceled" },
+]
+
+[[injection]]
+id = "closing"
+hook = "screen_closing"
+hook_version = 1
+kind = "HEAD"
+helper = "closing.rs"
+bindings = [
+  { name = "screen", ty = "&horizon_client::mod_api::NativeScreenView<'_>", value = "screen" },
 ]
 
 [[injection]]
