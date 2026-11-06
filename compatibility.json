@@ -1,0 +1,12 @@
+{
+  "game": "26.3",
+  "hooks": 411,
+  "horizon_repository": "https://github.com/horizon-rust/horizon",
+  "horizon_revision": "66f3981f522b24c250b21523a70080965b940424",
+  "horizon_mixins_repository": "https://github.com/horizon-rust/horizon-mixins",
+  "horizon_mixins_revision": "e8cd0aa38cffef49cb2e088ef716baa107148c02",
+  "mixin_schema": 6,
+  "source_sha256": {
+    "crates/horizon-client/src/game.rs": "d3e90d87f2813f120cfa89b0182e3710f670afc13a4dd94a147df23d09490672"
+  }
+}
