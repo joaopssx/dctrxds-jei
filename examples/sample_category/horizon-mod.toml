@@ -1,0 +1,8 @@
+id = "sample_category"
+name = "Sample category for DctrXD's JEI"
+version = "0.1.0"
+description = "Shows how a content mod declares a recipe category with data."
+authors = ["DctrXD"]
+api = "0.2"
+side = "both"
+capabilities = ["registries"]

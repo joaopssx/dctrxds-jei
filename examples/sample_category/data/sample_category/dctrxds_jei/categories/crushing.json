@@ -1,0 +1,8 @@
+{
+  "title": "Crushing",
+  "icon": "minecraft:grindstone",
+  "catalysts": ["minecraft:grindstone"],
+  "recipe_type": "sample_category:crushing",
+  "inputs": ["ingredient"],
+  "outputs": ["result"]
+}

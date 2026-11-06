@@ -1,0 +1,5 @@
+{
+  "type": "sample_category:crushing",
+  "ingredient": "minecraft:cobblestone",
+  "result": { "id": "minecraft:gravel", "count": 1 }
+}

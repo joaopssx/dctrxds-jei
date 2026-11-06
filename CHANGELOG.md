@@ -2,20 +2,40 @@
 
 ## Português
 
-### Não lançado: 0.0.1 (Fase 0, prova de conceito)
+### Não lançado: 0.1.0
 
-- Grade com os primeiros itens do jogo ao lado do inventário, dos baús e do criativo.
-- Clique esquerdo na grade dá o item no criativo; fora do criativo, a recusa aparece no chat.
-- Texto digitado sobre a grade é salvo e volta ao reiniciar.
-- Ctrl + tecla configurável (O por padrão) esconde e mostra a grade.
-- Linhas de diagnóstico na tela: nome do mod, texto, slot visto pelo hook de tooltip, FPS e tempo de desenho.
+Ainda não testado dentro do jogo.
+
+- Lista de itens em páginas ou por linhas, com variantes citadas por receitas (como poções).
+- Busca do JEI: palavras, frases, exclusão, `|`, `@mod`, `#tag`, `&id`, com caixa de busca própria.
+- Ordenação configurável.
+- Receitas e usos, com abas por estação, páginas, histórico e páginas de tags.
+- Botão `+` para preencher a grade com receitas do livro.
+- Modo cheat desligado por padrão, com `/give` opcional.
+- Favoritos de itens e receitas, histórico de buscas, modo edição.
+- Configuração em arquivo com recarga automática, página em Opções > Mods, teclas configuráveis, português e inglês.
+- Categorias de outros mods por dados.
+
+### 0.0.1 (Fase 0, prova de conceito)
+
+- Grade com os primeiros itens, clique que dá item, texto salvo e linhas de diagnóstico. Substituída pela 0.1.0.
 
 ## English
 
-### Unreleased: 0.0.1 (Phase 0, proof of concept)
+### Unreleased: 0.1.0
 
-- Grid with the game's first items beside the inventory, chests and the creative screen.
-- A left click on the grid gives the item in creative; outside creative, the refusal shows in chat.
-- Text typed over the grid is saved and comes back after a restart.
-- Ctrl + a configurable key (O by default) hides and shows the grid.
-- Diagnostic rows on screen: mod name, text, slot seen by the tooltip hook, FPS and draw time.
+Not tested inside the game yet.
+
+- Item list by pages or rows, with variants named by recipes (such as potions).
+- JEI's search: words, phrases, exclusion, `|`, `@mod`, `#tag`, `&id`, with a search box of its own.
+- Configurable sorting.
+- Recipes and uses, with a tab per station, pages, history and tag pages.
+- `+` button to fill the grid with recipes from the book.
+- Cheat mode off by default, with optional `/give`.
+- Bookmarks of items and recipes, lookup history, edit mode.
+- Settings in a file that reloads by itself, a page in Options > Mods, configurable keys, Portuguese and English.
+- Categories from other mods through data.
+
+### 0.0.1 (Phase 0, proof of concept)
+
+- Grid with the first items, a click that gives an item, saved text and diagnostic rows. Replaced by 0.1.0.

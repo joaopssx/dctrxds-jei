@@ -77,14 +77,25 @@ fn with_app<R>(f: impl FnOnce(&mut App) -> R) -> Option<R> {
     })
 }
 
+/// The settings in use. Before the game has handed over the file (on the title
+/// screen, say), it is read here, so a click on the settings page can't replace
+/// the player's file with the defaults.
 fn current_config() -> Config {
-    CONFIG.with(|config| {
-        config
-            .try_borrow()
-            .ok()
-            .and_then(|c| c.clone())
-            .unwrap_or_default()
-    })
+    let known = CONFIG.with(|config| config.try_borrow().ok().and_then(|c| c.clone()));
+    if let Some(config) = known {
+        return config;
+    }
+    let path = Game::native_config_dir().map(|dir| dir.join(format!("{ID}-client.toml")));
+    let config = match path.map(std::fs::read_to_string) {
+        Ok(Ok(text)) => Config::parse(&text).0,
+        _ => Config::default(),
+    };
+    CONFIG.with(|slot| {
+        if let Ok(mut slot) = slot.try_borrow_mut() {
+            *slot = Some(config.clone());
+        }
+    });
+    config
 }
 
 fn game_lang(game: &Game<'_>) -> Lang {
@@ -528,11 +539,16 @@ fn run_action(game: &mut Game<'_>, action: Action, allow_command: bool, language
 pub(super) fn frame(game: &mut Game<'_>) {
     apply_pending_config(game);
     follow_world(game);
-    let known = game.native_known_recipes();
+    // Only the recipes page shows what the player knows.
+    let known = with_app(|app| app.is_recipes_open())
+        .unwrap_or(false)
+        .then(|| game.native_known_recipes());
     let actions = SESSION.with(|session| {
         let mut guard = session.try_borrow_mut().ok()?;
         let session = guard.as_mut()?;
-        if !Arc::ptr_eq(&known, &session.known) {
+        if let Some(known) = known
+            && !Arc::ptr_eq(&known, &session.known)
+        {
             session.app.set_known(&known);
             session.known = known;
         }
